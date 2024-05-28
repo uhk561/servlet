@@ -22,6 +22,8 @@ public class GetMethodEx03 extends HttpServlet{
 		String name = request.getParameter("name");
 		int age =Integer.parseInt( request.getParameter("age"));
 		
+		//테스트용 주석 추가 
+		
 		PrintWriter out = response.getWriter();
 //		out.println("서블릿 수행");
 //		out.println("userId: " + userId);

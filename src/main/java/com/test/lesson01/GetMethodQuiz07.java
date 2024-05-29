@@ -22,7 +22,7 @@ public class GetMethodQuiz07 extends HttpServlet{
 		String address = request.getParameter("address");
 		String card = request.getParameter("card");
 		int price = Integer.valueOf(request.getParameter("price"));
-		
+		//stash용 주석
 		// response 출력(분기)
 		PrintWriter out = response.getWriter();
 		out.print("<html><head><title>주문결과</title></head><body>");

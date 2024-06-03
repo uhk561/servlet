@@ -13,6 +13,9 @@
 <body>
 	<%
 	String keyword = request.getParameter("keyword");
+	// 4점 이하 제외 체크됨: true  체크안됨: null
+	String startFilter = request.getParameter("startFilter");
+	boolean exclude = startFilter != null;  // 체크됨 => true 4점 이하 제외
 	
 	List<Map<String, Object>> list = new ArrayList<>();
     Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
@@ -47,7 +50,10 @@
 			
 			for (Map<String, Object> item : list) {
 			if (keyword.equals(item.get("menu"))) {
-				
+				// skip 조건이 체크되어있고 스킵 되어야 할 때 skip(continue)
+				if(exclude && (double)item.get("point") <= 4.0) {
+					continue; // 안뿌리고 skip
+				}
 			
 			
 		
@@ -59,15 +65,7 @@
 		</tr>
 		<%
 			}
-    	
-		%>
-		<tr>
-			<td><%= item.get("menu") %></td>
-			<td><%=item.get("name")  %></td>
-			<td><%=item.get("point")  %></td>
-		</tr>
-		<%
-			}
+		}
 			
 		%>
 	</table>

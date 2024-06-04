@@ -57,7 +57,7 @@
 		<header><h3 class="text-center text-danger">Sk Broadband IPTV</h3></header>
 		<nav class="menu bg-danger">
                 <ul class=" nav nav-fill">
-                    <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=전체" class="nav-link text-white">전체</a></li>
+                    <li class="nav-item"><a href="/lesson02/quiz09.jsp" class="nav-link text-white">전체</a></li>
                     <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=지상파" class="nav-link text-white">지상파</a></li>
                     <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=드라마" class="nav-link text-white">드라마</a></li>
                     <li class="nav-item"><a href="/lesson02/quiz09.jsp?category=예능" class="nav-link text-white">예능</a></li>
@@ -73,9 +73,13 @@
 					<th>카테고리</th>
 				</tr>
 				<%
+				
+				// request param				
 				 String category = request.getParameter("category");
+				
     		for (Map<String, String> item : list) {
-    			
+    			if (category == null || category.equals(item.get("category"))) {
+    			// 카테고리 null(전체) 또는 카테고리 일치하는 행
     			
     	%>	
 	    <tr>
@@ -84,6 +88,7 @@
 				<td><%=item.get("category") %></td>
 			</tr>
 		<%
+    				}
     			}
     		
 		%>
